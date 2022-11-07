@@ -22,6 +22,8 @@ namespace LogLab
             builder.RegisterGeneric(typeof(Logger<>))
                    .As(typeof(ILogger<>))
                    .SingleInstance();
+
+            // register something to resolve ILogger
         }
     }
 }
