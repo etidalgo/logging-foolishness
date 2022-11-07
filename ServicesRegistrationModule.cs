@@ -12,6 +12,7 @@ namespace LogLab
             base.Load(builder);
 
             builder.RegisterType<Distraction>().AsImplementedInterfaces();
+            builder.RegisterType<Diversion>().AsImplementedInterfaces();
 
             // Standard stuff to register logger classes
             // It's a bit bullshitty.

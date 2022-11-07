@@ -25,23 +25,26 @@ namespace LogLab
                 var distraction = scope.Resolve<IDistraction>();
                 distraction.Distract();
             }
-            catch
+            catch(Exception ex)
             {
                 // disappear the exception, this is a practice program
-                logger.LogInformation("info: this did not run to distraction");
-                logger.LogError("error: this did not run to distraction");
+                logger.LogInformation("info: this did not run to distraction", ex.Message);
+                logger.LogError("error: this did not run to distraction", ex);
             }
+
+            var diversion = scope.Resolve<IDiversion>();
+            diversion.Divert();
 
             try
             {
-                var diversion = scope.Resolve<IDiversion>();
-                diversion.Divert();
+                var diversion2 = scope.Resolve<IDiversion>();
+                diversion2.Divert();
             }
-            catch
+            catch (Exception ex)
             {
                 // disappear the exception, this is a practice program
-                logger.LogError("error: this did not run the diversion");
-                logger.LogInformation("info: this did not run the diversion");
+                logger.LogError("error: this did not run the diversion", ex);
+                logger.LogInformation("info: this did not run the diversion", ex);
             }
         }
     }
